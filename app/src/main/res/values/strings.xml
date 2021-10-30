@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PatientApp</string>
+    <string name="prompt_text">Input the patient ID</string>
+    <string name="submit_button">Submit</string>
+    <string name="background_description">Just an image</string>
+    <string-array name="sunsigns">
+        <item>100001</item>
+        <item>100002</item>
+    </string-array>
+</resources>

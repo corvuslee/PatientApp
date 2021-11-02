@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity(),
     public suspend fun getPredictions(view: android.view.View) {
         try {
             val result = GlobalScope.async {
-                callAztroAPI("https://asdfasdf.execute-api.eu-west-1.amazonaws.com/get_patient_details?patient_id=" + sunSign)
+                callAztroAPI("https://adsfasdf.execute-api.eu-west-1.amazonaws.com/get_patient_details?patient_id=" + sunSign)
             }.await()
 
             onResponse(result)
@@ -108,13 +108,14 @@ class MainActivity : AppCompatActivity(),
 
             // convert the string to JSON object for better reading
             val resultJson = JSONObject(result)
+            val patient_name = resultJson.getString("last_name") + ", " + resultJson.getString("first_name")
+            setText(this.patientName, patient_name)
 
             // Initialize prediction text
-            var prediction = "Patient details: \n"
+            var prediction = ""
 
             // Update text with various fields from response
             prediction += "Patient ID:" + resultJson.getString("patient_id") + "\n"
-            prediction += "Name:" + resultJson.getString("last_name") + ", " + resultJson.getString("first_name") + "\n"
             prediction += "Date of birth:" + resultJson.getString("dob")
 
             //Update the prediction to the view

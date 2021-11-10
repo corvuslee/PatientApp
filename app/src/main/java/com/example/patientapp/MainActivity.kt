@@ -55,7 +55,11 @@ class MainActivity : AppCompatActivity(),
 
                 if(result.contents != null) {
                     // Do something with the contents (this is usually a URL)
-                    println(result.contents)
+                    // println(result.contents)
+                    sunSign = result.contents
+                    GlobalScope.async {
+                        getPredictions(buttonView)
+                    }
                 }
             }
         }
@@ -81,7 +85,7 @@ class MainActivity : AppCompatActivity(),
     public suspend fun getPredictions(view: android.view.View) {
         try {
             val result = GlobalScope.async {
-                callAztroAPI("https://adsfasdf.execute-api.eu-west-1.amazonaws.com/get_patient_details?patient_id=" + sunSign)
+                callAztroAPI("https://asdfasdf.execute-api.eu-west-1.amazonaws.com/get_patient_details?patient_id=" + sunSign)
             }.await()
 
             onResponse(result)
@@ -160,7 +164,7 @@ class MainActivity : AppCompatActivity(),
         // QR Code Format
         scanner.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
         // Set Text Prompt at Bottom of QR code Scanner Activity
-        scanner.setPrompt("QR Code Scanner Prompt Text")
+        scanner.setPrompt("Scan the patient QR code")
         // Start Scanner (don't use initiateScan() unless if you want to use OnActivityResult)
         mQrResultLauncher.launch(scanner.createScanIntent())
     }

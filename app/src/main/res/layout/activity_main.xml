@@ -41,22 +41,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/promptTextView" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginEnd="116dp"
-        android:layout_marginBottom="40dp"
-        android:background="#FF9800"
-        android:onClick=""
-        android:text="@string/submit_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="OnClick" />
-
     <TextView
         android:id="@+id/resultView"
         android:layout_width="300dp"
@@ -89,7 +73,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="133dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="133dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
@@ -99,8 +82,7 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/openCamera"
@@ -108,8 +90,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="133dp"
         android:layout_marginEnd="133dp"
-        android:text="Scan QR Code"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:layout_marginBottom="30dp"
+        android:text="Scan patient ID"
+        app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

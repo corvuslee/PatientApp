@@ -28,13 +28,13 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var buttonView: Button = findViewById(R.id.button)
-        button.setOnClickListener {
-            GlobalScope.async {
-                getPredictions(buttonView)
-            }
-
-        }
+        var buttonView: Button = findViewById(R.id.openCamera)
+//        button.setOnClickListener {
+//            GlobalScope.async {
+//                getPredictions(buttonView)
+//            }
+//
+//        }
 
         val spinner = findViewById<Spinner>(R.id.spinner)
         val adapter = ArrayAdapter.createFromResource(

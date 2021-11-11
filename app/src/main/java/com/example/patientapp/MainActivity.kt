@@ -29,17 +29,6 @@ class MainActivity : AppCompatActivity(),
         setContentView(R.layout.activity_main)
 
         var buttonView: Button = findViewById(R.id.openCamera)
-
-//        val spinner = findViewById<Spinner>(R.id.spinner)
-//        val adapter = ArrayAdapter.createFromResource(
-//            this,
-//            R.array.sunsigns,
-//            android.R.layout.simple_spinner_item
-//        )
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//        spinner.adapter = adapter;
-//        spinner.onItemSelectedListener = this
-
         resultView = findViewById(R.id.resultView)
 
         // QR Code
@@ -74,11 +63,10 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-
     public suspend fun getPredictions(view: android.view.View) {
         try {
             val result = GlobalScope.async {
-                callAztroAPI("https://asdfasdf.execute-api.eu-west-1.amazonaws.com/get_patient_details?patient_id=" + sunSign)
+                callAztroAPI("https://adsfasdf.execute-api.eu-west-1.amazonaws.com/get_patient_details?patient_id=" + sunSign)
             }.await()
 
             onResponse(result)
@@ -97,11 +85,11 @@ class MainActivity : AppCompatActivity(),
             connection = url.openConnection() as HttpURLConnection
             // set headers for the request
             // set host name
-//        connection.setRequestProperty("x-rapidapi-host", "sameer-kumar-aztro-v1.p.rapidapi.com")
+            // connection.setRequestProperty("x-rapidapi-host", "sameer-kumar-aztro-v1.p.rapidapi.com")
 
             // set the rapid-api key
-//        connection.setRequestProperty("x-rapidapi-key", "<YOUR_RAPIDAPI_KEY>")
-//        connection.setRequestProperty("content-type", "application/x-www-form-urlencoded")
+            // connection.setRequestProperty("x-rapidapi-key", "<YOUR_RAPIDAPI_KEY>")
+            // connection.setRequestProperty("content-type", "application/x-www-form-urlencoded")
             // set the request method - POST
             connection.requestMethod = "GET"
             val `in` = connection.inputStream
@@ -144,6 +132,8 @@ class MainActivity : AppCompatActivity(),
         } catch (e: Exception) {
             e.printStackTrace()
             this.resultView!!.text = "Oops!! something went wrong, please try again"
+            // Remove previous on screen info
+            this.patientName!!.text = ""
         }
     }
 

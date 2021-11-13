@@ -72,4 +72,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/readmission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="30dp"
+        android:text="Re-admission Risk:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/openCamera"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/readmissionRisk"
+        android:layout_width="60sp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/openCamera"
+        app:layout_constraintStart_toEndOf="@+id/readmission" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

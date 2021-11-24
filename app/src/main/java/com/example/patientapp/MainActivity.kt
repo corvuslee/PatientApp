@@ -124,7 +124,16 @@ class MainActivity : AppCompatActivity(),
             setText(this.readmissionLevel, readmissionLevel)
             // cluster field
             val patientCluster = resultJson.getString("cluster")
-            setText(this.recommendation, patientCluster)
+            when (patientCluster) {
+                "0" -> setText(this.recommendation, "Low touch support")
+                "1" -> setText(this.recommendation, "Skilled nursing facility or higher acuity sight of care recommended")
+                "2" -> setText(this.recommendation, "Develop care plan, check in and monitor")
+                "3" -> setText(this.recommendation, "Discuss support for social determinants of health, build out program to address any gaps")
+                else -> {
+                    setText(this.recommendation, "Error. Unknown patient cluster")
+                }
+            }
+
 
             // Initialize prediction text
             var prediction = ""

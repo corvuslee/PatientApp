@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity(),
     public suspend fun getPredictions(view: android.view.View) {
         try {
             val result = GlobalScope.async {
-                callAztroAPI("https://adsfasdf.execute-api.eu-west-1.amazonaws.com/get_patient_details?patient_id=" + sunSign)
+                callAztroAPI("https://asdfasdf.execute-api.eu-west-1.amazonaws.com/get_patient_details?patient_id=" + sunSign)
             }.await()
 
             onResponse(result)
@@ -120,23 +120,19 @@ class MainActivity : AppCompatActivity(),
             val patient_name = resultJson.getString("last_name") + ", " + resultJson.getString("first_name")
             setText(this.patientName, patient_name)
             // re-admission risk field
-            val readmissionBinary = resultJson.getString("risk_of_readmission")
-            setText(this.readmissionRisk, "-")
-            if (readmissionBinary != "0") {
-                setText(this.readmissionRisk, "Yes")
-            }
+            val readmissionLevel = resultJson.getString("class")
+            setText(this.readmissionLevel, readmissionLevel)
+            // cluster field
+            val patientCluster = resultJson.getString("cluster")
+            setText(this.recommendation, patientCluster)
+
             // Initialize prediction text
             var prediction = ""
-
             // Update text with various fields from response
             prediction += "Patient ID: " + resultJson.getString("patient_id") + "\n"
             prediction += "Gender: " + resultJson.getString("gender") + "\n"
-            prediction += "Race: " + resultJson.getString("race") + "\n"
             prediction += "Age: " + resultJson.getString("age") + "\n"
-            prediction += "Medical specialty: " + resultJson.getString("medical_specialty") + "\n"
             prediction += "A1C result: " + resultJson.getString("A1Cresult") + "\n"
-            prediction += "Insulin trend: " + resultJson.getString("insulin") + "\n"
-            prediction += "On diabetes medication: " + resultJson.getString("diabetesMed") + "\n"
             //Update the prediction to the view
             setText(this.resultView, prediction)
 
@@ -145,7 +141,8 @@ class MainActivity : AppCompatActivity(),
             this.resultView!!.text = "Oops!! something went wrong, please try again"
             // Remove previous on screen info
             this.patientName!!.text = ""
-            this.readmissionRisk!!.text = ""
+            this.readmissionLevel!!.text = ""
+            this.recommendation!!.text = ""
         }
     }
 
